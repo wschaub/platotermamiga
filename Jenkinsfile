@@ -30,7 +30,7 @@ pipeline {
             }
             archiveArtifacts artifacts: '*.zip, dist/1.x/PLATOTerm*, dist/2.x/PLATOTerm*', followSymlinks: false, fingerprint:true
             sh "mkdir -p /var/www/PLATOTerm/${BUILD_ID}-${GIT_COMMIT}"
-            sh "cp -r /var/jenkins_home/jobs/platoterm/builds/${BUILD_ID}/archive/* /var/www/PLATOTerm/${BUILD_ID}-${GIT_COMMIT}"
+            sh "cp -r /var/jenkins_home/jobs/${JOB_BASE_NAME}/builds/${BUILD_ID}/archive/* /var/www/PLATOTerm/${BUILD_ID}-${GIT_COMMIT}"
            }
         }
     }
