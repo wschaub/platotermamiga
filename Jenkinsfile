@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Publish') {
             environment {
-                TIMESTAMP = new Date().format("YY-MM-dd",TimeZone.getTimeZone('UTC'))
+                TIMESTAMP = new Date().format("YYYY-MM-dd",TimeZone.getTimeZone('UTC'))
             }
         steps {
             dir('dist') {
