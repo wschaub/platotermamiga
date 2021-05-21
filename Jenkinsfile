@@ -28,8 +28,7 @@ pipeline {
                 sh "zip ../PLATOTermAmigaOS2x-${GIT_COMMIT}.zip 2.x/PLATOTerm*"
             }
             archiveArtifacts artifacts: '*.zip, dist/1.x/PLATOTerm*, dist/2.x/PLATOTerm*', followSymlinks: false, fingerprint:true
-            sh "mkdir -p /var/www/${JOB_BASE_NAME}/${BUILD_ID}-${GIT_COMMIT}"
-            sh "cp -r /var/jenkins_home/jobs/${JOB_BASE_NAME}/builds/${BUILD_ID}/archive/* /var/www/${JOB_BASE_NAME}/${BUILD_ID}-${GIT_COMMIT}"
+           sshPublisher(publishers: [sshPublisherDesc(configName: 'host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
            }
         }
     }
