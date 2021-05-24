@@ -1,7 +1,7 @@
 #!groovy
 pipeline {
     agent {
-        label '!windows'
+        label 'linux&&amiga'
     }
 
     environment {
